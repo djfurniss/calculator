@@ -161,7 +161,12 @@ submit.addEventListener("mousedown", (e) => {
 backspace.addEventListener("click", () => {
     // code only runs when working with a not fully equated calculation, keeps user from backspacing a total
     if (!submitted){
-        activeNums.innerText = activeNums.innerText.slice(0, activeNums.innerText.length -1)
+        if (activeNums.innerText[activeNums.innerText.length -1] === "."){
+            //if backspaced on a decimal, make available again
+            decReset();
+        }
+        activeNums.innerText = activeNums.innerText.slice(0, activeNums.innerText.length - 1)
+
         if (!activeNums.innerText){
             buttonsCont.style.opacity = ".2";
         }
@@ -170,6 +175,7 @@ backspace.addEventListener("click", () => {
 
 // CLEAR BUTTON LISTENER 
 clear.addEventListener("click", () => {
+    // TODO: if cleared and decimal isn't active, return it to available
     // clear the activeNums strip
     activeNums.innerText = "";
     // set the opacity for whole container for clear and backspace lower to indicate disabled
@@ -179,4 +185,5 @@ clear.addEventListener("click", () => {
     // return = button to original color
     submit.style.backgroundColor = '#4a4a4a';
     num1 = null;
+    decReset();
 })
