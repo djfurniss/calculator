@@ -175,7 +175,6 @@ backspace.addEventListener("click", () => {
 
 // CLEAR BUTTON LISTENER 
 clear.addEventListener("click", () => {
-    // TODO: if cleared and decimal isn't active, return it to available
     // clear the activeNums strip
     activeNums.innerText = "";
     // set the opacity for whole container for clear and backspace lower to indicate disabled
@@ -185,5 +184,6 @@ clear.addEventListener("click", () => {
     // return = button to original color
     submit.style.backgroundColor = '#4a4a4a';
     num1 = null;
+    // if cleared and decimal isn't active, return it to available
     decReset();
 })
